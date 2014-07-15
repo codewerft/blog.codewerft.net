@@ -1,0 +1,25 @@
+# Dependencies
+#markdown:         redcarpet
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Eventually Consistent
+tagline:          "The Codewerft Blog"
+description:      ""
+url:              http://blog.codewerft.net/
+baseurl:          http://blog.codewerft.net/
+paginate:         5
+
+author:
+  name:           'Codewerft UG (haftungsbeschränkt)'
+  url:            https://twitter.com/codewerft
+
+github:
+  repo:           https://github.com/codewerft
+
+twitter:          https://twitter.com/codewerft
+
+instagram:        http://instagram.com/codewerft
