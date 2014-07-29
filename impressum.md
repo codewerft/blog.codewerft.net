@@ -12,7 +12,7 @@ Germany
 
 ### Kontakt
 
-Email: contact@codewerft.com  
+Email: contact@codewerft.net  
 Telefon: +49 461 40715680  
 Telefax: +49 461 40796931  
 
