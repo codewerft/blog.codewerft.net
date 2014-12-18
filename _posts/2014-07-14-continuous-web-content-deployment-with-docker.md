@@ -1,14 +1,13 @@
 ---
 layout: post
-title: Continuous Web Content Deployment with Docker and Git
+title: Static Web Content Deployment with Docker and Git
 ---
 
-## Scenario
+This is a probably pretty standard scenario: You keep the sources for a static website project in a Git repository. One or more people are actively working on the project and updates should go 'live' as soon as changes are pushed to a specific branch of the repository (read more about branching models [here](http://nvie.com/posts/a-successful-git-branching-model/)).
 
-You keep the sources of a website or blog project in a Git repository (e.g., on Github). One or more people are actively working on the project and updates need
-to go 'live' frequently. You want to deploy the project automatically accross one or more web servers every time new changes are pushed to a specific branch of the repository. 
+Furthermore, you want to deploy the changes automatically accross one or more web servers every time new changes are pushed without having to transfer files manually via SFTP or the like. 
 
-In addition, you want to be able to quickly add additional server instances to or remove existing server instances from the project to address fail-safety, scalability and cost-effective operation.
+And if this wasn't enough, you also want to be able to quickly add additional server instances serving your web content (fail-safety, scalability), remove existing server instances and seamlessly migrate server instances between resources and infrastructure providers. 
 
 ### Prerequisites
 
@@ -30,7 +29,7 @@ docker build --rm -t webinstance .
 
 Launch a Docker `webinstance` container and point it to the Git repository where you store your code. The following options can be passed to the container:
 
-- `WI_REPOSITORY` - The URL of the Git repository you want to deploy. 
+- `WI_REPOSITORY` - The URL of the Git repository you want to deploy.
 - `WI_BRANCH` - The repository branch you want to deploy (default: master).
 - `WI_OAUTH` - The OAuth token to access your repository in case it is private.
 - `WI_POLL_INTERVAL` - Repository poll interval in minutes (default: 5).
@@ -46,7 +45,7 @@ docker run -p 127.0.0.1:5000:80 \
 If you run the `docker ps` command, you should see your new `webinstance` container up and running.
 
 {% highlight Bash shell scripts%}
-b06bc6ab2cff        webinstance:latest      /usr/bin/supervisord   1 minute ago         Up 1 minute         127.0.0.1:5000->80/tcp   mywebsite       
+b06bc6ab2cff        webinstance:latest      /usr/bin/supervisord   1 minute ago         Up 1 minute         127.0.0.1:5000->80/tcp   mywebsite
 {% endhighlight %}
 
 In this example, port 80 of the container's Nginx server is exposed locally on port 5000, so you should be able to connect to it, e.g., via lynx:  
@@ -56,8 +55,8 @@ In this example, port 80 of the container's Nginx server is exposed locally on p
 
 ## Deploying a Jekyll Blog
 
-*Continuous deployment of a [Jekyll](http://jekyllrb.com/) blog works 
-analogous to the deployment of a static website. The only difference is that 
+*Continuous deployment of a [Jekyll](http://jekyllrb.com/) blog works
+analogous to the deployment of a static website. The only difference is that
  we use a `docker.jekyllinstance` container instead of a `docker.webinstance`.*
 
 Clone the [docker.jekyllinstance](https://github.com/codewerft/docker.jekyllinstance) repository and build the Docker container:
@@ -198,4 +197,3 @@ Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, conse
 
 Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.
 -->
-
